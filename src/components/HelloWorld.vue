@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <Grid :grid="currentGrid"  @click="onClick"/>
+    <Grid :grid="currentGrid" @click="onClick" />
 
     <button @click="simpleGrid">new grid</button>
   </div>
@@ -12,8 +12,6 @@ import Vue from "vue";
 import { mapGetters, mapActions } from "vuex";
 import Grid from "./Grid.vue";
 
-
-
 export default Vue.extend({
   name: "HelloWorld",
   components: { Grid },
@@ -22,9 +20,9 @@ export default Vue.extend({
   },
   computed: mapGetters("gridModule", ["currentGrid"]),
   methods: {
-    ...mapActions("gridModule", ["simpleGrid"]),
-    onClick(rowIndex: number, colIndex: number) {
-      console.log("pos: ", rowIndex, colIndex);
+    ...mapActions("gridModule", ["simpleGrid", "updateGrid"]),
+    onClick(rowIndex: number, columnIndex: number) {
+      this.updateGrid({ rowIndex, columnIndex });
     }
   }
 });
