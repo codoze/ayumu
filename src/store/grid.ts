@@ -1,7 +1,8 @@
 import { Module, ActionTree, MutationTree } from "vuex";
+import GridMaker, { Grid } from '@/lib/gridMaker';
 
-type ColumnContent = number | undefined;
-type Grid = ColumnContent[][];
+
+
 
 interface State {
   grid: Grid;
@@ -10,13 +11,14 @@ interface State {
 interface RootState {}
 
 const state: State = {
-  grid: [[]]
+  grid: []
 };
 
 const actions: ActionTree<State, RootState> = {
   simpleGrid({ commit }) {
-    const newGrid: Grid = [[1, 2, 3, 4, 5, 6, 7, 8], [4, 5, 6]];
-    commit("SET_GRID", newGrid);
+    const newGrid = new GridMaker() ;
+    newGrid.generate()
+    commit("SET_GRID", newGrid.grid);
   }
 };
 

@@ -18,14 +18,19 @@
   width: 100px;
   height: @width;
   color: white;
-  font-size: @width*0.5
+  font-size: @width * 0.5;
 }
 </style>
 
 <template>
   <div class="container">
-    <div v-for="row in grid" :key="row" class="row">
-      <div v-for="col in row" :key="col" class="column">{{col}}</div>
+    <div v-for="(row,rowIndex) in grid" :key="rowIndex" class="row">
+      <button
+        @click="$emit('click',rowIndex, colIndex)"
+        v-for="(col, colIndex) in row"
+        :key="colIndex"
+        class="column"
+      >{{col}}</button>
     </div>
   </div>
 </template>
