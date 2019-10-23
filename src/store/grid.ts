@@ -15,7 +15,7 @@ const state: State = {
 
 const actions: ActionTree<State, RootState> = {
   simpleGrid({ commit }) {
-    const newGrid: Grid = [[1, 2, 3], [4, 5, 6]];
+    const newGrid: Grid = [[1, 2, 3, 4, 5, 6, 7, 8], [4, 5, 6]];
     commit("SET_GRID", newGrid);
   }
 };
